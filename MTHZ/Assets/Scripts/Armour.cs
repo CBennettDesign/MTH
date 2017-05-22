@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Armour : MonoBehaviour {
 
-	public int health = 100;
+	private int health = 200;
 
 	// Use this for initialization
 	void Start () {

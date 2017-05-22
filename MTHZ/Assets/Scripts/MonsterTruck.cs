@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MonsterTruck : MonoBehaviour {
 	public Slider healthSlider;
-	public int health = 100;
+	public float health = 10000;
 	public Slider armourSlider;
 	public int armour = 0;
 	public Slider progressSlider;
@@ -23,6 +23,7 @@ public class MonsterTruck : MonoBehaviour {
 		healthSlider.value = health;
 		armourSlider.value = armour;
 		GetProgress ();
+		Debug.Log(health);
 	}
 
 	private void GetArmour(){
@@ -36,5 +37,13 @@ public class MonsterTruck : MonoBehaviour {
 	private void GetProgress(){
 		progress = Time.time;
 		progressSlider.value = progress;
+	}
+
+	public void TakeDamage(float damage){
+		Debug.Log("WE MADE IT");
+		if ((damage - armour) > 0){
+			health = health - (damage - armour);
+			Debug.Log("WE MADE IT DEEP");
+		}
 	}
 }

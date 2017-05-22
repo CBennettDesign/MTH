@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTHZ", "Assembly-CSharp.csproj", "{48ADB372-E0A5-8111-B352-87CDBBBEABDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTHZ", "Assembly-CSharp-Editor.csproj", "{6E89C762-CDE7-01E7-0D4E-2CD39EB26088}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTHZ", "Assembly-UnityScript.unityproj", "{AA47569C-4258-9AAD-23A8-97208430B997}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48ADB372-E0A5-8111-B352-87CDBBBEABDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48ADB372-E0A5-8111-B352-87CDBBBEABDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48ADB372-E0A5-8111-B352-87CDBBBEABDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48ADB372-E0A5-8111-B352-87CDBBBEABDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E89C762-CDE7-01E7-0D4E-2CD39EB26088}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E89C762-CDE7-01E7-0D4E-2CD39EB26088}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E89C762-CDE7-01E7-0D4E-2CD39EB26088}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E89C762-CDE7-01E7-0D4E-2CD39EB26088}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA47569C-4258-9AAD-23A8-97208430B997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA47569C-4258-9AAD-23A8-97208430B997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA47569C-4258-9AAD-23A8-97208430B997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA47569C-4258-9AAD-23A8-97208430B997}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

@@ -12,7 +12,7 @@ public class Turret : MonoBehaviour {
 
 	private bool canShoot = true;
 	public float timeBetweenShots = 0.4f;
-	public int turretDamage = 20;
+	private int turretDamage = 80;
 
 	public Camera carCamera;
 	public GameObject hitMarker;
@@ -46,8 +46,8 @@ public class Turret : MonoBehaviour {
 			if (XCI.GetAxis(XboxAxis.RightTrigger, controller) != 0 && canShoot == true){
 
 				if (hit.transform.tag == "Enemy"){
-					//Do Damage to Enemy
-					//hit.transform.GetComponent<Enemy>().TakeDamage(gunDamage);
+					//hit.transform.GetComponent<MonsterTruck>().TakeDamage(turretDamage);
+					hit.collider.GetComponentInParent<MonsterTruck>().TakeDamage(turretDamage);
 				}
 				if (hit.transform.tag == "Armour"){
 					//Do Damage to Enemy
