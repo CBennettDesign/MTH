@@ -170,6 +170,7 @@
      <Compile Include="Assets\Scripts\Armour.cs" />
      <Compile Include="Assets\Scripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\CarScript.cs" />
+     <Compile Include="Assets\Scripts\DontGoThroughThings.cs" />
      <Compile Include="Assets\Scripts\Killbox.cs" />
      <Compile Include="Assets\Scripts\MonsterTruck.cs" />
      <Compile Include="Assets\Scripts\RollingObjects.cs" />
@@ -185,6 +186,7 @@
      <None Include="Assets\3rd Party\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
      <None Include="Assets\3rd Party\Fantasy Skybox FREE\Readme.txt" />
      <None Include="Assets\3rd Party\Standard Assets\Effects\ImageEffects\Shaders\SunShaftsComposite.shader" />
+     <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
      <None Include="Assets\3rd Party\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader" />
      <None Include="Assets\3rd Party\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
      <None Include="Assets\3rd Party\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />

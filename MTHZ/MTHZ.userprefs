@@ -4,9 +4,10 @@
     <Files>
       <File FileName="Assets\Scripts\CameraScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\CarScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Armour.cs" Line="7" Column="9" />
-      <File FileName="Assets\Scripts\Turret.cs" Line="15" Column="31" />
-      <File FileName="Assets\Scripts\MonsterTruck.cs" Line="8" Column="27" />
+      <File FileName="Assets\Scripts\Armour.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MonsterTruck.cs" Line="47" Column="40" />
+      <File FileName="Assets\Scripts\Turret.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SceneSpawner.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

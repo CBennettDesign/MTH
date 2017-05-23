@@ -17,6 +17,8 @@ public class Turret : MonoBehaviour {
 	public Camera carCamera;
 	public GameObject hitMarker;
 
+	public LayerMask whatCanBeShot;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -36,14 +38,14 @@ public class Turret : MonoBehaviour {
 	private void RayChecking(){
 		
 		RaycastHit hit;
-		//Ray ray = carCamera.ViewportPointToRay(new Vector3 (0.5f, 0.5f, 0));
-		//Ray ray = spawnPoint;
 		float distanceOfRay = 100;
-		if (Physics.Raycast(spawnPoint.position,transform.forward, out hit, distanceOfRay)){
+
+		if (Physics.Raycast(spawnPoint.position,transform.forward, out hit, distanceOfRay, whatCanBeShot, QueryTriggerInteraction.Collide)){
 			Debug.DrawLine (spawnPoint.position, hit.point);
 			hitMarker.transform.position = hit.point;
 
 			if (XCI.GetAxis(XboxAxis.RightTrigger, controller) != 0 && canShoot == true){
+				GetComponentInChildren<ParticleSystem>().Play();
 
 				if (hit.transform.tag == "Enemy"){
 					//hit.transform.GetComponent<MonsterTruck>().TakeDamage(turretDamage);

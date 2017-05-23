@@ -10,6 +10,8 @@ public class SceneSpawner : MonoBehaviour {
 	public float treeTimer = 0;
 	public Vector3 rotation = Vector3.zero;
 
+	public Transform spawnedObjects;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -24,6 +26,7 @@ public class SceneSpawner : MonoBehaviour {
 	}
 
 	private void SpawnTree(){
-		Instantiate(tree,spawn.position,Quaternion.Euler(rotation));
+		GameObject GO = Instantiate(tree,spawn.position,Quaternion.Euler(rotation));
+		GO.transform.SetParent (spawnedObjects);
 	}
 }
