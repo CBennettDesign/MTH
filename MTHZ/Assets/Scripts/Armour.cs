@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Armour : MonoBehaviour {
 
-	private int health = 200;
+	//health indicates the health value of an armour piece
+	private int health = 160;
 
 	// Use this for initialization
 	void Start () {
@@ -16,6 +17,16 @@ public class Armour : MonoBehaviour {
 		
 	}
 
+	//---------------------------------------------------------------
+	//	TakeDamage()
+	// Called when the armour piece is shot and the player sends the armour a message
+	// Destroys Armour piece if health is below 0
+	//
+	// Param:
+	//		Int damageToTake - The damage that is being done to the armour
+	// Return:
+	//		Void
+	//---------------------------------------------------------------
 	public void TakeDamage(int damageToTake){
 		GetComponentInChildren<ParticleSystem>().Play();
 		health = health - damageToTake;

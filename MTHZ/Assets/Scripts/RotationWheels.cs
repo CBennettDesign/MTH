@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class RotationWheels : MonoBehaviour {
 
+	//The axis on which to rotate
 	private Vector3 rotationAxis = Vector3.right;
+	//The speed at which to rotate
 	private float rotationSpeed = 220;
 
 
@@ -15,6 +17,7 @@ public class RotationWheels : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//Rotate the wheels based on the speed and axis
 		transform.Rotate(rotationAxis * Time.deltaTime * rotationSpeed * -1);
 	}
 }

@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class SceneSpawner : MonoBehaviour {
 
-	public GameObject tree;
+	//Slot for a spawnable object to be placed
+	public GameObject objectToBeSpawned;
+	//The position of the spawn point
 	public Transform spawn;
-	public float treeSpawnTimer = 1.5f;
-	public float treeTimer = 0;
+	//The default time between spawns
+	public float objectSpawnTimer = 1.5f;
+	//Timer variable made to hold time between ticks
+	public float timeTimer = 0;
+	//The spawned objects rotation
 	public Vector3 rotation = Vector3.zero;
-
+	//The parent Transform
 	public Transform spawnedObjects;
 
 	// Use this for initialization
@@ -19,14 +24,24 @@ public class SceneSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.time - treeTimer > treeSpawnTimer) {
-			treeTimer = Time.time;
-			SpawnTree();
+		//Run a spawn when the timer ticks
+		if (Time.time - timeTimer > objectSpawnTimer) {
+			timeTimer = Time.time;
+			SpawnObject();
 		}		
 	}
 
-	private void SpawnTree(){
-		GameObject GO = Instantiate(tree,spawn.position,Quaternion.Euler(rotation));
+	//---------------------------------------------------------------
+	//	SpawnObject()
+	// Spawns an object and sets its parent
+	//
+	// Param:
+	//		Void
+	// Return:
+	//		Void
+	//---------------------------------------------------------------
+	private void SpawnObject(){
+		GameObject GO = Instantiate(objectToBeSpawned,spawn.position,Quaternion.Euler(rotation));
 		GO.transform.SetParent (spawnedObjects);
 	}
 }
