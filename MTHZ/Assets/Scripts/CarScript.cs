@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
+using UnityEngine.UI;
 
 public class CarScript : MonoBehaviour {
 	//The controller assigned within the inspector
@@ -29,6 +30,9 @@ public class CarScript : MonoBehaviour {
 	//Determines what layers the ray will and won't hit, is changed in the inspector
 	public LayerMask rayMask;
 
+	public Slider healthSlider;
+	public float health = 100;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -39,6 +43,10 @@ public class CarScript : MonoBehaviour {
 		
 		Movement ();
 		RayChecks ();
+		UpdateHUD();
+		if (health < 1){
+			gameObject.SetActive (false);
+		}
 
 	}
 
@@ -95,6 +103,7 @@ public class CarScript : MonoBehaviour {
 		//Raycasts relative to the Player's left and sets the appropriate values allowing or disabling movement
 		RaycastHit hitLeft;
 		if (Physics.Raycast(transform.position, transform.right * -1, out hitLeft, rayLength,rayMask, QueryTriggerInteraction.Collide )){
+			Debug.DrawRay (transform.position, hitLeft.point);
 			canMoveLeft = false;
 			canMoveRight = true;
 			canMoveForward = true;
@@ -139,6 +148,14 @@ public class CarScript : MonoBehaviour {
 		else{
 			canMoveBack = true;
 		}
+			
+	}
 
+	private void UpdateHUD(){
+		healthSlider.value = health;
+	}
+
+	public void TakeDamage(float damage){
+		health -= damage;
 	}
 }

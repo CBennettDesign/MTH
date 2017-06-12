@@ -27,6 +27,12 @@ public class WheelSpinnerActivate : MonoBehaviour {
 	//Whether the saws can be toggled
 	public bool canToggleLeftSaws = true;
 
+	private Vector3 raystartPositionForward;
+	private Vector3 raystartPositionBackward;
+
+	private Vector3 raystartPositionLeftForward;
+	private Vector3 raystartPositionLeftBackward;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -48,9 +54,20 @@ public class WheelSpinnerActivate : MonoBehaviour {
 	//		Void
 	//---------------------------------------------------------------
 	private void Rays(){
+		
 		RaycastHit hitRight;
-		if (Physics.Raycast (rayStart.position, rightPivot.position, out hitRight, 100, rayMask, QueryTriggerInteraction.Collide)) {
+		raystartPositionForward = new Vector3 (rayStart.position.x, rayStart.position.y, rayStart.position.z + 7);
+		raystartPositionBackward = new Vector3 (rayStart.position.x, rayStart.position.y, rayStart.position.z - 7);
+		if (Physics.Raycast (raystartPositionForward, rightPivot.position, out hitRight, 100, rayMask, QueryTriggerInteraction.Collide)) {
 			
+			//Set Saws Active
+			if (canToggleRightSaws) {
+				Invoke ("RightSawsOn", 0.1f);
+				canToggleRightSaws = false;
+			}
+		}
+		if (Physics.Raycast (raystartPositionBackward, rightPivot.position, out hitRight, 100, rayMask, QueryTriggerInteraction.Collide)) {
+
 			//Set Saws Active
 			if (canToggleRightSaws) {
 				Invoke ("RightSawsOn", 0.1f);
@@ -59,7 +76,17 @@ public class WheelSpinnerActivate : MonoBehaviour {
 		}
 
 		RaycastHit hitLeft;
-		if (Physics.Raycast (rayStart.position, leftPivot.position, out hitLeft, 100, rayMask, QueryTriggerInteraction.Collide)) {
+		raystartPositionLeftForward = new Vector3 (rayStart.position.x, rayStart.position.y, rayStart.position.z + 7);
+		raystartPositionLeftBackward = new Vector3 (rayStart.position.x, rayStart.position.y, rayStart.position.z - 7);
+		if (Physics.Raycast (raystartPositionLeftForward, leftPivot.position, out hitLeft, 100, rayMask, QueryTriggerInteraction.Collide)) {
+
+			//Set Saws Active
+			if (canToggleLeftSaws) {
+				Invoke ("LeftSawsOn", 0.1f);
+				canToggleLeftSaws = false;
+			}
+		}
+		if (Physics.Raycast (raystartPositionLeftBackward, leftPivot.position, out hitLeft, 100, rayMask, QueryTriggerInteraction.Collide)) {
 
 			//Set Saws Active
 			if (canToggleLeftSaws) {

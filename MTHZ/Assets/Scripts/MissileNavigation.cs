@@ -11,13 +11,16 @@ public class MissileNavigation : MonoBehaviour {
 	//The position of the missiles initial jump
 	public Transform missileUp;
 	//List of potential targets aka players
-	public Transform[] enemies;
+	public GameObject[] enemies;
 	//Explosion particle effect played at raycast "collision"
 	public GameObject explosion;
 	//The selected player/enemy chosen from the list and targetted
-	public Transform enemy;
+	public GameObject enemy;
 	//The Layer mask allowing the missiles to only collide with enemies/players
 	public LayerMask missileRayMask;
+
+	private bool boomed = false;
+	private float missileDamage = 45;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +30,7 @@ public class MissileNavigation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Chase ();
-		transform.LookAt(enemy);
+		transform.LookAt(enemy.transform);
 		BOOM ();
 
 	}
@@ -45,7 +48,7 @@ public class MissileNavigation : MonoBehaviour {
 		//Invoke ("TurnOff", 30);
 		if (startChase){
 			if (goUp == false){
-				transform.position = (Vector3.MoveTowards (transform.position,enemy.position, 0.3f ));
+				transform.position = (Vector3.MoveTowards (transform.position,enemy.transform.position, 0.3f ));
 			}
 			else{
 				transform.position = (Vector3.MoveTowards(transform.position, missileUp.position, 0.3f));
@@ -104,15 +107,43 @@ public class MissileNavigation : MonoBehaviour {
 	//---------------------------------------------------------------
 	private void BOOM(){
 
+
 		RaycastHit hit;
-		if (Physics.Raycast(transform.position, enemy.position, out hit, 100, missileRayMask, QueryTriggerInteraction.Collide)){
-			Debug.DrawLine (transform.position, enemy.position);
+		RaycastHit hitBack;
+		RaycastHit hitRight;
+
+		if (Physics.Raycast(transform.position, enemy.transform.position, out hit, 100, missileRayMask, QueryTriggerInteraction.Collide)){
+			Debug.DrawLine (transform.position, enemy.transform.position);
 			if (hit.distance < 2){
-				GameObject explo = Instantiate (explosion, transform.position, Quaternion.identity) as GameObject;
+				Instantiate (explosion, transform.position, Quaternion.identity);
+				hit.collider.SendMessage ("TakeDamage", missileDamage);
+				boomed = true;
 				TurnOff();
-
-
 			}
+		}
+
+		if (Physics.Raycast(transform.position, transform.forward, out hitBack, 100, missileRayMask, QueryTriggerInteraction.Collide) && boomed == false){
+			Debug.DrawLine (transform.position, transform.forward);
+			if (hitBack.distance < 2){
+				Instantiate (explosion, transform.position, Quaternion.identity);
+				boomed = true;
+				TurnOff();
+			}
+		}
+
+		if (Physics.Raycast(transform.position, transform.right, out hitRight, 100, missileRayMask, QueryTriggerInteraction.Collide) && boomed == false){
+			Debug.DrawLine (transform.position, transform.forward);
+			if (hitBack.distance < 2){
+				Instantiate (explosion, transform.position, Quaternion.identity);
+				TurnOff();
+			}
+		}
+	}
+
+	public void ShotDown(){
+		if (boomed == false){
+			Instantiate (explosion, transform.position, Quaternion.identity);
+			TurnOff();
 		}
 	}
 }

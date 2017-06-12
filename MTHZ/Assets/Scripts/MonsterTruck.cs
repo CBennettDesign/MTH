@@ -51,6 +51,11 @@ public class MonsterTruck : MonoBehaviour {
 	//The parent of the damaged particle effects
 	public GameObject damaged;
 
+	private bool hurt = false;
+	private bool reallyHurt = false;
+	public static float truckDamage = 0f;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -68,6 +73,7 @@ public class MonsterTruck : MonoBehaviour {
 		FlameRay ();
 		MissileAttack ();
 		FlameOn ();
+		AlmostDead ();
 	}
 
 	//---------------------------------------------------------------
@@ -161,7 +167,8 @@ public class MonsterTruck : MonoBehaviour {
 	//---------------------------------------------------------------
 	public void TakeDamage(float damage){
 		if ((damage - armour) > 0){
-			health = health - (damage - armour);
+			truckDamage = damage - armour;
+			health = health - truckDamage;
 		}
 	}
 
@@ -254,9 +261,21 @@ public class MonsterTruck : MonoBehaviour {
 	//		Void
 	//---------------------------------------------------------------
 	private void FlameOn(){
-		if (health < 9999){
-			damaged.SendMessage ("TurnOn");
+		if (hurt == false){
+			if (health < 9999) {
+				damaged.SendMessage ("TurnOn");
+				hurt = true;
+			}
 		}
 	}
 
+	private void AlmostDead(){
+		if (reallyHurt == false){
+			if (health < 9900) {
+				Debug.Log ("start hurting");
+				damaged.SendMessage ("TurnOnVeryHurt");
+				reallyHurt = true;
+			}
+		}
+	}
 }

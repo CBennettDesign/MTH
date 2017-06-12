@@ -6,11 +6,13 @@ public class DamagedState : MonoBehaviour {
 
 	//Holds the particle components that visualise a damaged state
 	public ParticleSystem[] damagedStates;
+	public GameObject extremeDamageState;
 
 	// Use this for initialization
 	void Start () {
 		damagedStates = GetComponentsInChildren<ParticleSystem> ();
 		TurnOff ();
+		TurnOffVeryHurt ();
 	}
 	
 	// Update is called once per frame
@@ -47,5 +49,14 @@ public class DamagedState : MonoBehaviour {
 		for (int i = 0; i < 25; i++) {
 			damagedStates [i].gameObject.SetActive (false);
 		}
+	}
+
+	public void TurnOnVeryHurt(){
+		Debug.Log ("Bring the Pain");
+		extremeDamageState.SetActive (true);
+	}
+
+	public void TurnOffVeryHurt(){
+		extremeDamageState.SetActive (false);
 	}
 }
